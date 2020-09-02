@@ -29,7 +29,7 @@ $.ajaxSetup({
       success: successCB,
       error: errorCB
     }
-    $.ajax(request);
+    $.ajax(request).then(getTasks('all'));
   };
 
   // Delete task request
@@ -38,7 +38,7 @@ $.ajaxSetup({
       method: 'DELETE',
       url: 'api/tasks/' + id +'?api_key=1' 
     }
-    $.ajax(request);
+    $.ajax(request).then(getTasks('all'));
   };
 
   // Edit task request
@@ -55,7 +55,7 @@ $.ajaxSetup({
       success: successCB,
       error: errorCB
     }
-  $.ajax(request);
+  $.ajax(request).then(getTasks('all'));
   };
 
   //Mark Complete
@@ -67,7 +67,7 @@ $.ajaxSetup({
         success: successCB,
         error: errorCB
     }
-    $.ajax(request);
+    $.ajax(request).then(getTasks('all'));
   }
 
   //Mark Active 
@@ -80,5 +80,5 @@ $.ajaxSetup({
         success: successCB,
         error: errorCB
     }
-    $.ajax(request);
+    $.ajax(request).then(getTasks('all'));
   }
