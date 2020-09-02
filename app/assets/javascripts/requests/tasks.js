@@ -17,7 +17,7 @@ $.ajaxSetup({
 
 
   // Post Task request
-  var postTask = function (content, successCB, errorCB) {
+  var postTask = function (content) {
     var request = {
       type: 'POST',
       url: 'api/tasks?api_key=1',
@@ -26,23 +26,33 @@ $.ajaxSetup({
           content: content
         }
       },
-      success: successCB,
-      error: errorCB
+      success: function () {
+        getTasks('all')
+      },
+      error: function () {
+        console.log('error')
+      }
     }
-    $.ajax(request).then(getTasks('all'));
+    $.ajax(request);
   };
 
   // Delete task request
   var deleteTask = function (id) {
     var request = {
       method: 'DELETE',
-      url: 'api/tasks/' + id +'?api_key=1' 
+      url: 'api/tasks/' + id +'?api_key=1' ,
+      success: function () {
+        getTasks('all');
+      },
+      error: function () {
+        console.log("error")
+      }
     }
-    $.ajax(request).then(getTasks('all'));
+    $.ajax(request);
   };
 
   // Edit task request
-  var editTask = function (id, content, successCB, errorCB) {
+  var editTask = function (id, content) {
     var request = {
       type: 'PUT',
       url: 'api/tasks/' + id + '?api_key=1',
@@ -52,33 +62,45 @@ $.ajaxSetup({
           content: content,
         }        
       },
-      success: successCB,
-      error: errorCB
+      success: function () {
+        getTasks('all');
+      },
+      error: function () {
+        console.log('error');
+      }
     }
-  $.ajax(request).then(getTasks('all'));
+  $.ajax(request);
   };
 
   //Mark Complete
-  var taskCompleted = function (id, successCB, errorCB) {
+  var taskCompleted = function (id) {
     var request = {
         type: 'PUT',
         url: 'api/tasks/' + id + '/mark_complete?api_key=1',
         
-        success: successCB,
-        error: errorCB
+        success: function () {
+          getTasks('all');
+        },
+        error: function () {
+          console.log('error');
+        }
     }
-    $.ajax(request).then(getTasks('all'));
+    $.ajax(request);
   }
 
   //Mark Active 
 
-  var taskActive = function (id, successCB, errorCB) {
+  var taskActive = function (id) {
     var request = {
         type: 'PUT',
         url: 'api/tasks/' + id + '/mark_active?api_key=1',
        
-        success: successCB,
-        error: errorCB
+        success: function () {
+          getTasks('all');
+        },
+        error: function () {
+          console.log('error');
+        }
     }
-    $.ajax(request).then(getTasks('all'));
+    $.ajax(request);
   }
