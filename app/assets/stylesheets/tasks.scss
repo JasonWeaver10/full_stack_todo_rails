@@ -1,3 +1,74 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    background-color: beige;
+}
+
+.title {
+    color: #326ba8;
+    background-color: beige;
+}
+
+#tasks {
+    .col-12 {
+        border-color: #326ba8;
+        background-color: white;
+    }
+
+    .edit , .remove {
+        color: #326ba8;
+        background-color: lightblue;
+        font-weight: bold;
+        width: 10em;
+        height: 2em;
+        margin: 0 0 2em 0;
+    }
+
+    label {
+        margin: 0 1em 0 1em;
+        color: #326ba8;
+    }
+
+    .mark {
+        margin: .5em 0 0 0;
+        color: #326ba8;
+    }
+
+    .submit {
+        color: #326ba8;
+        background-color: lightblue;
+    }
+
+    .editInput {
+        background-color: white;
+    }
+}
+
+.control {
+
+    .newTask {
+        height: 3em;
+        width: 20em;
+        margin: 1em 0 1em 0;
+        background-color: white;
+    }
+    
+    .add {
+        background-color: lightblue;
+        color: #326ba8;
+        font-weight: bold;
+        margin: 1em 1em 0 1em;
+        height: 3em;
+        width: 10em;
+    }
+
+    label {
+        margin: 1.75em .5em 1em 1em;
+        color: #326ba8;
+    }
+
+    .select {
+        margin: 2em 1em 1em 0;
+    }
+}

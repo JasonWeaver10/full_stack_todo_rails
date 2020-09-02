@@ -8,3 +8,4 @@ json.tasks do
     json.updated_at task.updated_at
   end
 end
+
