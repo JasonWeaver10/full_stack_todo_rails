@@ -51,26 +51,27 @@ var getTasks = function  (displayType) {
     getTasks('all');
   
 // mark complete / active
-    $(document).on("change", ".mark", function(){
+    $(document).on("change", ".mark", async function(){
       var checkId = $(this).prev().prev().attr('data-id');
       if($(this).prop("checked") === true){
-        taskCompleted(checkId);
+        await taskCompleted(checkId);
       }
       else if($(this).prop("checked") === false) {
-        taskActive(checkId);
+        await taskActive(checkId);
       }
       getTasks('all');
     });
 
 // remove button 
-    $(document).on("click", ".remove", function() {
+    $(document).on("click", ".remove", async function() {
       var removeid = $(this).attr('data-id');
       deleteTask(removeid);
-      getTasks('all');
+      await getTasks('all')
+    
     });
 
 // edit button
-    $(document).on('click', '.editTask', function () {
+    $(document).on('click', '.editTask', async function () {
       var editId = $(this).attr('data-id');
       $(this).prev().prepend('<input class="editInput" type="text-box"></input><button class="submit">Submit</button>')
       $(".edit").toggleClass('editTask');
@@ -78,16 +79,16 @@ var getTasks = function  (displayType) {
         $('.edit').toggleClass("editTask");
         var editContent = $('.editInput').val();
         editTask(editId, editContent);
-        getTasks('all');
+       await getTasks('all');
       })
     });
 
 // add task button
-    $('.add').click(function () {
+    $('.add').click(async function () {
       newTaskInfo = $('.newTask').val();
       postTask(newTaskInfo);
       $('.newTask').val("");
-      getTasks('all');
+      await getTasks('all');
     });
 
 // show completed checkbox
